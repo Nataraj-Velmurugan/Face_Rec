@@ -1,6 +1,6 @@
 import React, { Component, Fragment  } from "react";
 import Webcam from "react-webcam";
-import { WebcamCapture} from './WebCam'
+import WebcamCapture from './WebCam'
 
 export default class Login extends Component {
     constructor(props) {
@@ -51,30 +51,34 @@ export default class Login extends Component {
     }
 
     render() {
-
         return (
-            <div name="main">                                
-                    {this.state.face ?  <WebcamCapture/> : <div class="getData"> <form>
-                    <h3>Login</h3>
-                    <div className="form-group">
-                        <label>Email address</label>
-                        <input type="email" onChange={this.handleChange} className="form-control" name="email"  placeholder="Enter email" />
-                    </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" onChange={this.handleChange} className="form-control" name="password"  placeholder="Enter password" />
-                    </div>
-                    <div className="text-center">
-                        <p>OR</p>
-                    </div>
-                    <div className="form-group">
-                        <div className="text-center">
-                            <button onClick={this.handleFace} className="btn btn-secondary btn-block">Face Recognition</button>
+            <span> 
+                    {this.state.face ?  <WebcamCapture/> : 
+                    <div className="auth-wrapper">
+                        <div className="auth-inner">
+                            <form>
+                                <h3>Login</h3>
+                                <div className="form-group">
+                                    <label>Email address</label>
+                                    <input type="email" onChange={this.handleChange} className="form-control" name="email"  placeholder="Enter email" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input type="password" onChange={this.handleChange} className="form-control" name="password"  placeholder="Enter password" />
+                                </div>
+                                <div className="text-center">
+                                    <p>OR</p>
+                                </div>
+                                <div className="form-group">
+                                    <div className="text-center">
+                                        <button onClick={this.handleFace} className="btn btn-secondary btn-block">Face Recognition</button>
+                                    </div>
+                                </div>                
+                                <button onClick={this.handleSubmit} type="submit" className="btn btn-primary btn-block">Submit</button>            
+                            </form>
                         </div>
-                    </div>                
-                    <button onClick={this.handleSubmit}type="submit" className="btn btn-primary btn-block">Submit</button>            
-                </form></div>}
-            </div>
+                    </div>}
+            </span>
         );
     }
 }
